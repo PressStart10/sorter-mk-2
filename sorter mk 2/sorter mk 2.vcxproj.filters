@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sorter mk 2.cpp">
+    <ClCompile Include="merge_sort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,12 +2,29 @@
 //
 
 #include <iostream>
+#include <Windows.h>
+#include <cstdlib>
+#include <time.h>
 using namespace std;
-int array_to_sort[];
-
+const int leng = 10;
+int array_to_sort[leng];
+int shuffle(int* shufflearray,int n) {
+    srand(time(NULL));
+    for (int i = 0; i < n; i++) {
+        shufflearray[i] = i + 1;
+    }
+    return 0;
+}
+void printarray(int *ar, int len) {
+    for (int i = 0; i < len; i++) {
+        cout << ar[i] << " : ";
+    }
+    cout << endl;
+}
 int main()
 {
-    cout << "Hello World!\n";
+    shuffle(array_to_sort, leng);
+    printarray(array_to_sort, (sizeof(array_to_sort) / sizeof(*array_to_sort)));
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
@@ -20,3 +37,4 @@ int main()
 //   4. Use the Error List window to view errors
 //   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
 //   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+
