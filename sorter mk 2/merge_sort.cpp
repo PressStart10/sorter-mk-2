@@ -8,10 +8,20 @@
 using namespace std;
 const int leng = 10;
 int array_to_sort[leng];
+void swap(int* ar, int index1, int index2) {
+    int indexs1 = ar[index1];
+    int indexs2 = ar[index2];
+    ar[index1] = indexs2;
+    ar[index2] = indexs1;
+}
 int shuffle(int* shufflearray,int n) {
     srand(time(NULL));
     for (int i = 0; i < n; i++) {
         shufflearray[i] = i + 1;
+    }
+    //is this unnessisary? yes. do I care? no. will I change it? probably not.
+    for (int i = 0; i < n; i++) {
+        swap(shufflearray, i, rand() % n);
     }
     return 0;
 }
