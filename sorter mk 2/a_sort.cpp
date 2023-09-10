@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <time.h>
 using namespace std;
-const int leng = 10;
+const int leng = 100;
 int array_to_sort[leng];
 void swap(int* ar, int index1, int index2) {
     int indexs1 = ar[index1];
@@ -14,7 +14,7 @@ void swap(int* ar, int index1, int index2) {
     ar[index1] = indexs2;
     ar[index2] = indexs1;
 }
-int shuffle(int* shufflearray,int n) {
+void shuffle(int* shufflearray,int n) {
     srand(time(NULL));
     for (int i = 0; i < n; i++) {
         shufflearray[i] = i+1;
@@ -23,7 +23,6 @@ int shuffle(int* shufflearray,int n) {
     for (int i = 0; i < n; i++) {
         swap(shufflearray, i, rand() % n);
     }
-    return 0;
 }
 void printarray(int *ar, int len) {
     for (int i = 0; i < len; i++) {
@@ -46,12 +45,25 @@ void sort(int* ar, int len) {
         }
     }
 }
+bool check(int* ar, int len) {
+    int checks = 0;
+    for (checks; checks < len-1; checks++) {
+        if (ar[checks] > ar[checks + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
 int main()
 {
     shuffle(array_to_sort, leng);
     printarray(array_to_sort, (sizeof(array_to_sort) / sizeof(*array_to_sort)));
     sort(array_to_sort, leng - 1);
     printarray(array_to_sort, leng);
+    if (check(array_to_sort, leng) == true)
+        cout << "sort verified!\n\a";
+    else
+        cout << "sort malfunction :_(\n\a";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
