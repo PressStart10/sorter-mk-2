@@ -17,7 +17,7 @@ void swap(int* ar, int index1, int index2) {
 int shuffle(int* shufflearray,int n) {
     srand(time(NULL));
     for (int i = 0; i < n; i++) {
-        shufflearray[i] = i + 1;
+        shufflearray[i] = i+1;
     }
     //is this unnessisary? yes. do I care? no. will I change it? probably not.
     for (int i = 0; i < n; i++) {
@@ -31,10 +31,27 @@ void printarray(int *ar, int len) {
     }
     cout << endl;
 }
+void sort(int* ar, int len) {
+    int correct = 0;
+    while (correct != len) {
+        for (int i = 0; i < len; i++) {
+            if ((ar[i] > ar[i + 1])) {
+                swap(ar, i, i + 1);
+            }
+        }
+        for (correct = 0; correct < len; correct++) {
+            if (ar[correct] > ar[correct + 1]) {
+                break;
+            }
+        }
+    }
+}
 int main()
 {
     shuffle(array_to_sort, leng);
     printarray(array_to_sort, (sizeof(array_to_sort) / sizeof(*array_to_sort)));
+    sort(array_to_sort, leng - 1);
+    printarray(array_to_sort, leng);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
